@@ -6,15 +6,17 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity button_led is
-    Port ( button_0 : in STD_LOGIC;
-           button_1 : in STD_LOGIC;
-           LED_0 : out STD_LOGIC;
-           LED_1 : out STD_LOGIC);
+    Port ( buttons : in STD_LOGIC_VECTOR(4 downto 0); -- 5 buttons
+           LEDs : out STD_LOGIC_VECTOR(7 downto 0)); -- 8 LEDs
 end button_led;
 
 architecture Behavioral of button_led is
     
 begin
-LED_0 <= button_0; -- turn on LED_0 when button_0 is pressed
-LED_1 <= button_1; -- turn on LED_1 when button_1 is pressed
+-- first 5 LEDs are directly mapped to each of the 5 buttons
+LEDs(7 downto 3) <= buttons(4 downto 0);
+-- illuminate the other 3 LEDs using boolean logic
+LEDs(0) <= buttons(0) AND buttons(1);
+LEDs(1) <= buttons(2) AND buttons(3);
+LEDs(2) <= buttons(4) AND buttons(0);
 end Behavioral;
