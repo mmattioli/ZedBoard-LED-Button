@@ -1,9 +1,6 @@
 ## VIVADO
-*.cache/
-*.hw/
-*.ip_user_files/
-*.runs/
-*.sim/
+vivado/*
+!vivado/*.tcl
 
 ## macOS
 *.DS_Store
