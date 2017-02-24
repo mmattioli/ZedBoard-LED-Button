@@ -1,6 +1,37 @@
-## VIVADO
-vivado/*
+## Exclude all
+*
+!*/
+!.gitignore
+!*.md
+
+## Xilinx Vivado
+
+# RTL sources
+!rtl/**
+
+# Constraints
+!constraints/**
+
+# Tcl scripts
 !vivado/*.tcl
 
-## macOS
-*.DS_Store
+# Block designs
+!bd/**/*.bd
+
+# IP cores
+!ip/**/*.xci
+
+## Xilinx SDK
+
+!sdk/**/*.hdf
+!sdk/*/.cproject
+!sdk/*/.project
+!sdk/*/.sdkproject
+sdk/RemoteSystemsTempFiles/**
+
+# Application sources
+!sdk/*/src/*.[ch]
+
+# Board support packages
+!sdk/*/*.mss
+!sdk/*/Makefile
