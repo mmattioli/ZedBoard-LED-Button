@@ -2,21 +2,24 @@
 -- Written by Michael Mattioli
 --
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.ALL;
 
-entity button_led is
-    Port ( buttons : in STD_LOGIC_VECTOR(4 downto 0); -- 5 buttons
-           LEDs : out STD_LOGIC_VECTOR(7 downto 0)); -- 8 LEDs
-end button_led;
+entity led_button is
+    port ( buttons  : in std_logic_vector (4 downto 0); -- 5 buttons
+           leds     : out std_logic_vector (7 downto 0)); -- 8 LEDs
+end led_button;
 
-architecture Behavioral of button_led is
-    
+architecture behavioral of led_button is
+
 begin
--- first 5 LEDs are directly mapped to each of the 5 buttons
-LEDs(7 downto 3) <= buttons(4 downto 0);
--- illuminate the other 3 LEDs using boolean logic
-LEDs(0) <= buttons(0) AND buttons(1);
-LEDs(1) <= buttons(2) AND buttons(3);
-LEDs(2) <= buttons(4) AND buttons(0);
-end Behavioral;
+
+    -- First 5 LEDs are directly mapped to each of the 5 buttons
+    leds(7 downto 3) <= buttons(4 downto 0);
+
+    -- Illuminate the other 3 LEDs using boolean logic
+    leds(0) <= buttons(0) and buttons(1);
+    leds(1) <= buttons(2) and buttons(3);
+    leds(2) <= buttons(4) and buttons(0);
+
+end behavioral;
